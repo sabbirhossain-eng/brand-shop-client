@@ -1,6 +1,10 @@
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+    const [showPassword, setShowPassword] = useState(false);
+
     const handleLogin = e =>{
         e.preventDefault();
         const form = e.target;
@@ -34,17 +38,20 @@ const Login = () => {
                   required
                 />
               </div>
-              <div className="form-control">
+              <div className="form-control relative">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="password"
                   className="input input-bordered"
                   required
                 />
+                <span onClick={() => setShowPassword(!showPassword)} className="absolute top-14 left-72">
+              {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>}
+              </span>
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
