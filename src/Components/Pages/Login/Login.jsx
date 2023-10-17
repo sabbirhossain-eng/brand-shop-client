@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, redirect, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
-
+    const {login, user, googleCreateUser} = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
     const handleLogin = e =>{
         e.preventDefault();
         const form = e.target;
@@ -13,7 +19,51 @@ const Login = () => {
 
         console.log(email, password);
 
-    }
+        login(email, password)
+        .then(result =>{
+            console.log(result.user)
+            navigate(location?.state ? location.state : '/')
+            if(result.user){
+              navigate("/");
+            }
+            toast('Login Success!!')
+        })
+        .catch(error =>{
+            console.error(error)
+            const errorMessage = error.message;
+            toast(errorMessage);
+        })
+
+    };
+
+    const handleLoading = () =>{
+        if(!user){
+          return redirect('/');
+        }
+        return null;
+      };
+
+      const handleGoogle = () =>{
+        googleCreateUser()
+        .then(result =>{
+          console.log(result.user)
+          navigate(location?.state ? location.state : '/')
+          if(result.user){
+            toast('Login Success!!')
+            navigate("/");
+          }
+        })
+        .catch(error =>{
+          console.error(error);
+          const errorMessage = error.message;
+          toast(errorMessage);
+        })
+        
+        if(!user){
+          return redirect('/');
+        }
+        return null;
+      };
   return (
     <div className="card shadow-2xl bg-base-100">
         <div className="text-center mt-4">
@@ -59,10 +109,17 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn bg-[#77aa51] text-white hover:text-[#322153]">Login</button>
+                <button onClick={handleLoading} className="btn bg-[#77aa51] text-white hover:text-[#322153]">Login</button>
+                <ToastContainer/>
               </div>
-              <p className="text-center mb-5">Do not have an account please <Link className="text-[#77aa51] font-semibold" to="/registration">Registration</Link></p>
+              <div className="text-center">
+              <button className=" btn mt-3" onClick={handleGoogle}>
+                <span className="text-4xl font-semibold"><FcGoogle></FcGoogle></span>
+                 <span className="text-[#322153] capitalize">Login With Google</span></button>
+              <ToastContainer/>
+            </div>
             </form>
+              <p className="text-center mb-5">Do not have an account please <Link className="text-[#77aa51] font-semibold" to="/registration">Registration</Link></p>
           </div>
         </div>
       </div>

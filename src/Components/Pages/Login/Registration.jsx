@@ -49,7 +49,7 @@ const Registration = () => {
         })
 
     };
-    const handleRegSubmit = () =>{
+    const handleLoading = () =>{
       if(!user){
         return redirect('/')
       }
@@ -127,7 +127,7 @@ const Registration = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button onClick={handleRegSubmit } className="btn bg-[#77aa51] text-white hover:text-[#322153]">Registration</button>
+                <button onClick={handleLoading } className="btn bg-[#77aa51] text-white hover:text-[#322153]">Registration</button>
                 <ToastContainer/>
               </div>
               <div className="text-center">
