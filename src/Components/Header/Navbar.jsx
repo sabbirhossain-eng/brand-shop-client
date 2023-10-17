@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -22,7 +22,7 @@ const Navbar = () => {
                                         
     </>
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 shadow-2xl rounded-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -56,7 +56,8 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <Link to="/login">
+          <button className="btn">Login</button></Link>
       </div>
     </div>
   );
