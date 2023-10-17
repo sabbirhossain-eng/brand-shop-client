@@ -4,10 +4,11 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { FcGoogle } from "react-icons/fc";
 
 const Registration = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const {userCreate, user} = useContext(AuthContext);
+    const {userCreate, googleCreateUser, user} = useContext(AuthContext);
     const navigate = useNavigate();
 
 
@@ -55,6 +56,18 @@ const Registration = () => {
       return null;
     };
     
+    const handleGoogle = () =>{
+      googleCreateUser()
+      .then(result =>{
+        console.log(result.user)
+        toast('Your Registration Success!!')
+      })
+      .catch(error =>{
+        console.error(error);
+        const errorMessage = error.message;
+        toast(errorMessage);
+      })
+    };
    
     return (
         <div>
@@ -117,8 +130,14 @@ const Registration = () => {
                 <button onClick={handleRegSubmit } className="btn bg-[#77aa51] text-white hover:text-[#322153]">Registration</button>
                 <ToastContainer/>
               </div>
-              <p className="text-center mb-5">Already have an account please <Link className="text-[#77aa51] font-semibold" to="/login">Login</Link></p>
+              <div className="text-center">
+              <button className=" btn mt-3" onClick={handleGoogle}>
+                <span className="text-4xl font-semibold"><FcGoogle></FcGoogle></span>
+                 <span className="text-[#322153] capitalize">Registration With Google</span></button>
+              <ToastContainer/>
+            </div>
             </form>
+              <p className="text-center mb-5">Already have an account please <Link className="text-[#77aa51] font-semibold" to="/login">Login</Link></p>
           </div>
         </div>
       </div>
