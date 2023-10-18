@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1001,
+        "name": "Apple",
+        "image": "https://i.ibb.co/HDmqdhF/Apple.png"
+    },
+    {
+        "id": 2002,
+        "name": "Samsung",
+        "image": "https://i.ibb.co/BcGS2NT/Samsung.png"
+    },
+    {
+        "id": 3033,
+        "name": "Sony",
+        "image": "https://i.ibb.co/68YDG8F/Sony.png"
+    },
+    {
+        "id": 4044,
+        "name": "Google Pixel",
+        "image": "https://i.ibb.co/JtbfWQN/google-pixel.png"
+    },
+    {
+        "id": 5555,
+        "name": "Vivo",
+        "image": "https://i.ibb.co/PQvz7RZ/brand-logo.png"
+    },
+    {
+        "id": 6666,
+        "name": "Xiaomi",
+        "image": "https://i.ibb.co/Vvrf9qT/image.png"
+    }
+]
