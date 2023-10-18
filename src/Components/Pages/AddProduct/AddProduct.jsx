@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from 'sweetalert2'
 
 
 const AddProduct = () => {
@@ -19,6 +20,27 @@ const AddProduct = () => {
         const newProductAdd = { name, brand, price, category, rating, url, description };
         console.log(newProductAdd);
         
+        fetch('http://localhost:5000/product',{
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newProductAdd)
+        })
+
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data)
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Product Added Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'OKay'
+                  })
+            }
+
+        })
     };
 
     const handleChange = event => {
@@ -135,7 +157,7 @@ const AddProduct = () => {
             </div>
             <div className="sm:col-span-2">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Description
+              Short description
               </label>
               <textarea
                 name="description"
