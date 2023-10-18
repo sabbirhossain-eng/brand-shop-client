@@ -44,27 +44,33 @@ const router = createBrowserRouter([
             },
             {
                 path:'/Apple',
-                element: <Apple></Apple>
+                element: <Apple></Apple>,
+                loader: () => fetch('http://localhost:5000/product')
             },
             {
                 path: '/Samsung',
-                element: <Samsung></Samsung>
+                element: <Samsung></Samsung>,
+                loader: () => fetch('http://localhost:5000/product')
             },
             {
                 path: '/Sony',
-                element: <Sony></Sony>
+                element: <Sony></Sony>,
+                loader: () => fetch('http://localhost:5000/product')
             },
             {
                 path: '/Google',
-                element: <Google></Google>
+                element: <Google></Google>,
+                loader: () => fetch('http://localhost:5000/product')
             },
             {
                 path: '/Vivo',
-                element: <Vivo></Vivo>
+                element: <Vivo></Vivo>,
+                loader: () => fetch('http://localhost:5000/product')
             },
             {
                 path: '/Xiaomi',
-                element: <Xiaomi></Xiaomi>
+                element: <Xiaomi></Xiaomi>,
+                loader: () => fetch('http://localhost:5000/product')
             }
         ]
     }
