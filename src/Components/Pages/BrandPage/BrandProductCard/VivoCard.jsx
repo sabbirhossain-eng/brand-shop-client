@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const VivoCard = ({product}) => {
-    const { name, brand, price, category, rating, url } = product;
+    const {_id, name, brand, price, category, rating, url } = product;
    
     const totalStars = 5;
     const activeStars = parseInt(rating, 10);
@@ -66,15 +67,18 @@ const VivoCard = ({product}) => {
           <span className="text-3xl font-bold text-gray-900 dark:text-white">
             $ {price}
           </span>
-          <a
-            href="#"
+          <Link to={`/update/${_id}`}>
+          <div
             className="text-white bg-[#77aa51] btn hover:text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
           >
             Update
-          </a>
+          </div>
+          </Link>
         </div>
       </div>
+      <Link to={`/details/${_id}`}>
       <button className="text-white bg-[#77aa51] btn hover:text-black w-full">Details</button>
+      </Link>
     </div>
   );
 };

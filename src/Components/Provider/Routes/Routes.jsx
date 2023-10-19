@@ -14,6 +14,7 @@ import Google from "../../Pages/BrandPage/Google";
 import Vivo from "../../Pages/BrandPage/Vivo";
 import Xiaomi from "../../Pages/BrandPage/Xiaomi";
 import Details from "../../Pages/Details/Details";
+import Update from "../../Pages/Update/Update";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,13 @@ const router = createBrowserRouter([
             {
                 path: '/registration',
                 element: <Registration></Registration>
+            },
+            {
+                path: '/update/:id',
+                element: <PrivetRoute>
+                    <Update></Update>
+                </PrivetRoute>,
+                loader: ({params}) => fetch(`http://localhost:5000/product/${params.id}`),
             },
             {
                 path: '/details/:id',
