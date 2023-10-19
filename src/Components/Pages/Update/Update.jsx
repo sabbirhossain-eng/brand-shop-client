@@ -1,59 +1,65 @@
-import { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
-import Swal from 'sweetalert2';
+import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Update = () => {
-    const newUpdate = useLoaderData()
-    
-    const {_id, name, brand, price, category, rating, url, description }= newUpdate;
+  const newUpdate = useLoaderData();
 
+  const { _id, name, brand, price, category, rating, url, description } =
+    newUpdate;
 
-    const [formData, setFormData] = useState({
-        name: '',
-        brand: '',
-        price: '',
-        category: '',
-        rating: '',
-        url: '',
-        description: '',
+  const [formData, setFormData] = useState({
+    name: name || "",
+    brand: brand || "",
+    price: price || "",
+    category: category || "",
+    rating: rating || "",
+    url: url || "",
+    description: description || "",
+  });
+
+  const handleUpdate = (event) => {
+    event.preventDefault();
+
+    const { name, brand, price, category, rating, url, description } = formData;
+
+    fetch(`http://localhost:5000/product/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        brand,
+        price,
+        category,
+        rating,
+        url,
+        description,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "Success!",
+            text: "Product Update Successfully",
+            icon: "success",
+            confirmButtonText: "OKay",
+          });
+        }
       });
-    const handleUpdate = event =>{
-        event.preventDefault();
-        
-        const {name, brand, price, category, rating, url, description } = formData;
+  };
 
-        const updatedProduct = { name, brand, price, category, rating, url, description };
-        
-        fetch(`http://localhost:5000/product/${_id}`,{
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updatedProduct)
-        })
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
-        .then(res => res.json())
-        .then(data =>{
-            console.log(data)
-            if(data.modifiedCount > 0){
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Product Update Successfully',
-                    icon: 'success',
-                    confirmButtonText: 'OKay'
-                  })
-            }
-
-        })
-    };
-
-    const handleChange = event => {
-        const { name, value } = event.target;
-        setFormData(prevState => ({
-          ...prevState,
-          [name]: value,
-        }));
-      };
   return (
     <div className="bg-white dark:bg-gray-900">
       <div className="py-8 px-4 mx-auto max-w-2xl lg:py-16">
@@ -185,7 +191,7 @@ const Update = () => {
             type="submit"
             className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-[#77aa51] rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
           >
-            Update Submit
+            Update Submits
           </button>
         </form>
       </div>
