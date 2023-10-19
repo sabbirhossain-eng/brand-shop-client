@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom"; // Import NavLink from react-router-dom
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
@@ -7,46 +7,10 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-    .then()
-    .catch();
+      .then()
+      .catch();
   };
 
-  
-
-  const navLink = (
-    <>
-      <li>
-        <NavLink
-          lassName={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#77aa51] underline" : ""
-          }
-          to="/"
-        >
-          Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          lassName={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#77aa51] underline" : ""
-          }
-          to="/addProduct"
-        >
-          Add Product
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          lassName={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#77aa51] underline" : ""
-          }
-          to="/myCart"
-        >
-          My Cart
-        </NavLink>
-      </li>
-    </>
-  );
   return (
     <div className="navbar bg-base-100 shadow-2xl rounded-lg">
       <div className="navbar-start">
@@ -71,62 +35,105 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            {navLink}
+            <li>
+              <NavLink
+                to="/"
+                className="nav-link"
+                activeStyle={{ color: "#77aa51", background: "#77aa51" }}
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/addProduct"
+                className="nav-link"
+                activeStyle={{ color: "#77aa51", background: "#77aa51" }}
+              >
+                Add Product
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/myCart"
+                className="nav-link"
+                activeStyle={{ color: "#77aa51", background: "#77aa51" }}
+              >
+                My Cart
+              </NavLink>
+            </li>
           </ul>
         </div>
         <img src="https://i.ibb.co/Vq065H0/Electra-Tech-removebg.png" alt="" />
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navLink}</ul>
+        <ul className="menu menu-horizontal px-1">
+          {/*
+            Use NavLink components with activeStyle for styling
+          */}
+          <li>
+            <NavLink
+              to="/"
+              className="nav-link"
+              activeStyle={{ color: "#77aa51", background: "#77aa51" }}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/addProduct"
+              className="nav-link"
+              activeStyle={{ color: "#77aa51", background: "#77aa51" }}
+            >
+              Add Product
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/myCart"
+              className="nav-link"
+              activeStyle={{ color: "#77aa51", background: "#77aa51" }}
+            >
+              My Cart
+            </NavLink>
+          </li>
+        </ul>
       </div>
       <div className="navbar-end">
-      <div>
+        <div>
           {user ? (
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  {
-                    user?.photoURL?
-                    (
+                  {user?.photoURL ? (
                     <img src={user.photoURL} alt="User" />
-                    )
-                    :
-                    (
+                  ) : (
                     <img src="https://i.ibb.co/7yL8SZJ/profile-user.png" alt="User" />
-                    )
-                  }
+                  )}
                 </div>
               </label>
               <ul
                 tabIndex={0}
                 className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 space-y-3"
               >
+                <li>{user?.displayName ? <p>Name: {user.displayName}</p> : null}</li>
+                <li>{user?.email ? <p>Email: {user.email}</p> : null}</li>
                 <li>
-                  {
-                    user?.displayName?
-                    <p>Name:
-                      <br /> 
-                      {user.displayName}</p>
-                    :
-                    <p>{null}</p>
-                  }
+                  <button
+                    onClick={handleLogOut}
+                    className="font-semibold text-lg bg-[#77aa51] text-white hover:text-[#322153] justify-center"
+                  >
+                    Log Out
+                  </button>
                 </li>
-                <li>
-                  {
-                    user?.email?
-                    <p>Email:
-                      <br /> 
-                      {user.email}</p>
-                    :
-                    <p>{null}</p>
-                  }
-                </li>
-               <li>
-                <button onClick={handleLogOut} className="font-semibold text-lg bg-[#77aa51] text-white hover:text-[#322153] justify-center">Log Out</button>
-               </li>
               </ul>
             </div>
-          ) : <button className="btn capitalize text-lg bg-[#77aa51] text-white hover:text-[#322153]"><Link to="/login">Login</Link></button>}
+          ) : (
+            <button className="btn capitalize text-lg bg-[#77aa51] text-white hover:text-[#322153]">
+              <Link to="/login">Login</Link>
+            </button>
+          )}
         </div>
       </div>
     </div>
