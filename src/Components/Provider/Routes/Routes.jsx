@@ -13,6 +13,7 @@ import Sony from "../../Pages/BrandPage/Sony";
 import Google from "../../Pages/BrandPage/Google";
 import Vivo from "../../Pages/BrandPage/Vivo";
 import Xiaomi from "../../Pages/BrandPage/Xiaomi";
+import Details from "../../Pages/Details/Details";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,11 @@ const router = createBrowserRouter([
                 path: '/registration',
                 element: <Registration></Registration>
             },
+            {
+                path: '/details/:id',
+                element: <Details></Details>
+                
+              },
             {
                 path:'/Apple',
                 element: <Apple></Apple>,

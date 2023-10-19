@@ -1,8 +1,10 @@
 
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 
 const AppleCard = ({product}) => {
-  const { name, brand, price, category, rating, url } = product;
+  const {_id, name, brand, price, category, rating, url } = product;
    
     const totalStars = 5;
     const activeStars = parseInt(rating, 10);
@@ -75,7 +77,9 @@ const AppleCard = ({product}) => {
           </a>
         </div>
       </div>
+      <Link to={`/details/${_id}`}>
       <button className="text-white bg-[#77aa51] btn hover:text-black w-full">Details</button>
+      </Link>
     </div>
   );
 };
