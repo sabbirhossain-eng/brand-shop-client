@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import Swal from 'sweetalert2';
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Details = () => {
   const [product, setProduct] = useState([]);
   const { id } = useParams();
+  const {user} = useContext(AuthContext);
 
   useEffect(() => {
     fetch(`http://localhost:5000/product/${id}`)
@@ -29,6 +32,41 @@ const Details = () => {
   const totalStars = 5;
   const activeStars = parseInt(rating, 10);
   const blankStars = totalStars - activeStars;
+
+  const handleCart = () =>{
+    const newCart = { name, brand, price, category, rating, url, description };
+    if(user){
+      fetch('http://localhost:5000/cart',{
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(newCart)
+    })
+  
+    .then(res => res.json())
+    .then(data =>{
+        console.log(data)
+        if(data.insertedId){
+            Swal.fire({
+                title: 'Success!',
+                text: 'Add Cart Successfully',
+                icon: 'success',
+                confirmButtonText: 'OKay'
+              })
+        }
+  
+    })
+    }
+    else{
+      Swal.fire({
+        title: 'warning!',
+        text: 'You do not have an account',
+        icon: 'warning',
+        confirmButtonText: '<a href="/login">Do you want to Login?</a>'
+      })
+    }
+  }
 
   return (
     <div>
@@ -93,7 +131,7 @@ const Details = () => {
                 $ {price}
               </span>
               <a
-                href="#"
+                onClick={handleCart}
                 className="text-white bg-[#77aa51] btn hover:text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               >
                 Add Cart
