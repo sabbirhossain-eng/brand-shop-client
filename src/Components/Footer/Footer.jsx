@@ -15,31 +15,31 @@ const Footer = () => {
                     href="/"
                     className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                   >
-                    News
+                    Home
                   </a>
                 </li>
                 <li>
                   <a
-                    href="/"
+                    href="/addProduct"
                     className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                   >
-                    World
+                    Add Product
                   </a>
                 </li>
                 <li>
                   <a
-                    href="/"
+                    href="/myCart"
                     className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                   >
-                    Games
+                    My Cart
                   </a>
                 </li>
                 <li>
                   <a
-                    href="/"
+                    href="/faq"
                     className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                   >
-                    References
+                    FAQ
                   </a>
                 </li>
               </ul>
