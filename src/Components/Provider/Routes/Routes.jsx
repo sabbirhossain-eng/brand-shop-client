@@ -15,6 +15,7 @@ import Vivo from "../../Pages/BrandPage/Vivo";
 import Xiaomi from "../../Pages/BrandPage/Xiaomi";
 import Details from "../../Pages/Details/Details";
 import Update from "../../Pages/Update/Update";
+import FaqAndAns from "../../Pages/Faq/FaqAndAns";
 
 const router = createBrowserRouter([
     {
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
                 path: '/Xiaomi',
                 element: <Xiaomi></Xiaomi>,
                 loader: () => fetch('http://localhost:5000/product')
+            },
+            {
+                path:'/faq',
+                element: <FaqAndAns></FaqAndAns>
             }
         ]
     }
