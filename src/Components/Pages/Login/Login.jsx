@@ -65,7 +65,7 @@ const Login = () => {
         return null;
       };
   return (
-    <div className="card shadow-2xl bg-base-100">
+    <div className="card shadow-2xl">
         <div className="text-center mt-4">
         <h1 className="text-5xl font-bold text-[#322153]">Login now !</h1>
         </div>
