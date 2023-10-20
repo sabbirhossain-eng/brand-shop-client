@@ -20,7 +20,7 @@ const AddProduct = () => {
         const newProductAdd = { name, brand, price, category, rating, url, description };
         console.log(newProductAdd);
         
-        fetch('https://technology-and-electronics-brand-shop-server-side-5r0uiy36x.vercel.app/product',{
+        fetch('https://technology-and-electronics-brand-shop-server-side-c5q6iwxvi.vercel.app/product',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

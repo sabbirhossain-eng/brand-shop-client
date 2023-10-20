@@ -22,7 +22,7 @@ const CartCard = ({product, products, setProducts}) => {
             if (result.isConfirmed) {
 
 
-                fetch(`https://technology-and-electronics-brand-shop-server-side-5r0uiy36x.vercel.app/cart/${_id}`, {
+                fetch(`https://technology-and-electronics-brand-shop-server-side-c5q6iwxvi.vercel.app/cart/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

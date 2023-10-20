@@ -23,7 +23,7 @@ const Update = () => {
 
     const { name, brand, price, category, rating, url, description } = formData;
 
-    fetch(`https://technology-and-electronics-brand-shop-server-side-5r0uiy36x.vercel.app/product/${_id}`, {
+    fetch(`https://technology-and-electronics-brand-shop-server-side-c5q6iwxvi.vercel.app/product/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

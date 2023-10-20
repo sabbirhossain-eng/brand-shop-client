@@ -9,7 +9,7 @@ const Details = () => {
   const {user} = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`https://technology-and-electronics-brand-shop-server-side-5r0uiy36x.vercel.app/product/${id}`)
+    fetch(`https://technology-and-electronics-brand-shop-server-side-c5q6iwxvi.vercel.app/product/${id}`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Network response was not ok");
@@ -36,7 +36,7 @@ const Details = () => {
   const handleCart = () =>{
     const newCart = { name, brand, price, category, rating, url, description };
     if(user){
-      fetch('https://technology-and-electronics-brand-shop-server-side-5r0uiy36x.vercel.app/cart',{
+      fetch('https://technology-and-electronics-brand-shop-server-side-c5q6iwxvi.vercel.app/cart',{
         method: 'POST',
         headers: {
             'content-type': 'application/json'

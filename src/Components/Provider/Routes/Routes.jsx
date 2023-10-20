@@ -38,7 +38,7 @@ const router = createBrowserRouter([
                 element: <PrivetRoute>
                             <MyCart></MyCart>
                         </PrivetRoute>,
-                 loader: () => fetch('https://technology-and-electronics-brand-shop-server-side-5r0uiy36x.vercel.app/cart')   
+                 loader: () => fetch('https://technology-and-electronics-brand-shop-server-side-c5q6iwxvi.vercel.app/cart')   
             },
             {
                 path: '/login',
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
                 element: <PrivetRoute>
                     <Update></Update>
                 </PrivetRoute>,
-                loader: ({params}) => fetch(`https://technology-and-electronics-brand-shop-server-side-5r0uiy36x.vercel.app/product/${params.id}`),
+                loader: ({params}) => fetch(`https://technology-and-electronics-brand-shop-server-side-c5q6iwxvi.vercel.app/product/${params.id}`),
             },
             {
                 path: '/details/:id',
@@ -63,32 +63,32 @@ const router = createBrowserRouter([
             {
                 path:'/Apple',
                 element: <Apple></Apple>,
-                loader: () => fetch('https://technology-and-electronics-brand-shop-server-side-5r0uiy36x.vercel.app/product')
+                loader: () => fetch('https://technology-and-electronics-brand-shop-server-side-c5q6iwxvi.vercel.app/product')
             },
             {
                 path: '/Samsung',
                 element: <Samsung></Samsung>,
-                loader: () => fetch('https://technology-and-electronics-brand-shop-server-side-5r0uiy36x.vercel.app/product')
+                loader: () => fetch('https://technology-and-electronics-brand-shop-server-side-c5q6iwxvi.vercel.app/product')
             },
             {
                 path: '/Sony',
                 element: <Sony></Sony>,
-                loader: () => fetch('https://technology-and-electronics-brand-shop-server-side-5r0uiy36x.vercel.app/product')
+                loader: () => fetch('https://technology-and-electronics-brand-shop-server-side-c5q6iwxvi.vercel.app/product')
             },
             {
                 path: '/Google',
                 element: <Google></Google>,
-                loader: () => fetch('https://technology-and-electronics-brand-shop-server-side-5r0uiy36x.vercel.app/product')
+                loader: () => fetch('https://technology-and-electronics-brand-shop-server-side-c5q6iwxvi.vercel.app/product')
             },
             {
                 path: '/Vivo',
                 element: <Vivo></Vivo>,
-                loader: () => fetch('https://technology-and-electronics-brand-shop-server-side-5r0uiy36x.vercel.app/product')
+                loader: () => fetch('https://technology-and-electronics-brand-shop-server-side-c5q6iwxvi.vercel.app/product')
             },
             {
                 path: '/Xiaomi',
                 element: <Xiaomi></Xiaomi>,
-                loader: () => fetch('https://technology-and-electronics-brand-shop-server-side-5r0uiy36x.vercel.app/product')
+                loader: () => fetch('https://technology-and-electronics-brand-shop-server-side-c5q6iwxvi.vercel.app/product')
             },
             {
                 path:'/faq',
