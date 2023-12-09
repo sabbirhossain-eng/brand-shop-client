@@ -1,5 +1,7 @@
 # Technology and Electronics Brand Shop
 
+- [@website live link](https://technology-and-electroni-89266.web.app)
+
 - Some of the features of the project are mentioned below
 
 - 3 pages have been added to the navbar.
